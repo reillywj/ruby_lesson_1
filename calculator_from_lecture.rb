@@ -1,9 +1,12 @@
-# calculator.rb
+# calculator_from_lecture.rb
 # 1. string interpolation vs concat
 # 2. extract repetitive logic to methods
 # 3. keep track of variable types (class)
 # 4. variable scope determined by do...end; outer scope vars are available to inner scope, but not vice versa
 # 5. pass by ref vs pass by value; if method mutates caller, outer object was modified
+
+puts "This was from the lecture."
+
 def say(msg)
   puts "=> #{msg}"
 end
