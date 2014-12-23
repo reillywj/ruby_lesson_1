@@ -1,5 +1,5 @@
 #assignment_calculator.rb
-require 'pry'
+#require 'pry' #Used for testing.
 
 #Note: Use only local variables.
 
