@@ -14,7 +14,17 @@ require 'pry'
 
 def ask_for_initial_number(phrase)
   print "Please enter the #{phrase}: "
-  gets.chomp.to_f
+  input = gets.chomp
+  if numerical_input?(input)
+    return input.to_f
+  else
+    print "#{tell_invalid("entry.")} "
+    ask_for_initial_number(phrase)
+  end
+end
+
+def numerical_input?(string)
+  return (string =~ /[0-9]/) != nil
 end
 
 def ask_for_operation(hash)
@@ -36,7 +46,13 @@ def ask_for_final_number(number1 = "", operation ="")
   else
     print "#{number1} #{operation} <Enter Final Number>: "
   end
-  gets.chomp.to_f
+  input = gets.chomp
+  if numerical_input?(input)
+    return input.to_f
+  else
+    print "#{tell_invalid("entry.")} "
+    ask_for_final_number(number1, operation)
+  end
 end
 
 def tell_invalid(message)
@@ -66,7 +82,7 @@ begin
   number1 = ask_for_initial_number("first number")
   operation = ask_for_operation(operator_hash)
   operator = operator_hash[operation]
-  number2 = ask_for_final_number
+  number2 = ask_for_final_number number1, operator
   puts "#{number1} #{operator} #{number2} = #{number1.send(operator,number2)}"
   loop_truth = something_else?("calculate")
   loops += 1
