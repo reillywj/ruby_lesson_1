@@ -1,0 +1,16 @@
+
+[1mFrom:[0m /home/ubuntu/workspace/ruby_lesson_1/assignment_rock_paper_scissors.rb @ line 57 Object#check_winner:
+
+    [1;34m53[0m: [32mdef[0m [1;34mcheck_winner[0m(entry1, entry2, entry1_name, entry2_name, score1, score2)
+    [1;34m54[0m:   [32mif[0m entry1 == entry2
+    [1;34m55[0m:     [31m[1;31m"[0m[31mIt's a tie.[1;31m"[0m[31m[0m
+    [1;34m56[0m:   [32melsif[0m (entry1 == [31m[1;31m'[0m[31mr[1;31m'[0m[31m[0m && entry2 == [31m[1;31m'[0m[31ms[1;31m'[0m[31m[0m) || (entry1 == [31m[1;31m'[0m[31ms[1;31m'[0m[31m[0m && entry2 == [31m[1;31m'[0m[31mp[1;31m'[0m[31m[0m) || (entry1 == [31m[1;31m'[0m[31mp[1;31m'[0m[31m[0m && entry2 == [31m[1;31m'[0m[31mr[1;31m'[0m[31m[0m)
+ => [1;34m57[0m:     binding.pry
+    [1;34m58[0m:     score1 += [1;34m1[0m
+    [1;34m59[0m:     [31m[1;31m"[0m[31m#{entry1_name}[0m[31m wins![1;31m"[0m[31m[0m
+    [1;34m60[0m:   [32melse[0m
+    [1;34m61[0m:     score2 += [1;34m1[0m
+    [1;34m62[0m:     [31m[1;31m"[0m[31m#{entry2_name}[0m[31m wins![1;31m"[0m[31m[0m
+    [1;34m63[0m:   [32mend[0m
+    [1;34m64[0m: [32mend[0m
+
