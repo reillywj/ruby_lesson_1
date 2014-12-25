@@ -76,18 +76,18 @@ def player_in_the_lead (score1, score2, name1, name2)
   if score1 == score2
     puts "It's a tie. #{score1} to #{score2}."
   elsif score1 > score2
-    tell_winning_score(score1, score2, name1)
+    tell_winning_score(score1, score2, name1, name2)
   else
-    tell_winning_score(score2, score1, name2)
+    tell_winning_score(score2, score1, name2, name1)
   end
 end
 
-def tell_winning_score(winning_score, losing_score, winner_name)
-  puts "#{winner_name} is winning #{winning_score} to #{losing_score}."
+def tell_winning_score(winning_score, losing_score, winner_name, loser_name)
+  puts "#{winner_name} is beating #{loser_name} #{winning_score} to #{losing_score}."
 end
 
-def tell_winner(name, rounds, winning_score, losing_score)
-  puts "#{name} wins best of #{rounds}:  #{winning_score} to #{losing_score}."
+def tell_winner(winner, loser, rounds, winning_score, losing_score)
+  puts "#{winner} beat #{loser} in best of #{rounds}:  #{winning_score} to #{losing_score}."
 end
   
 def message(input)
@@ -97,8 +97,8 @@ end
 player1_score = 0
 player2_score = 0
 is_winner = false
-player1 = "Player 1"
-player2 = "Player 2"
+player1 = "The Player"
+player2 = "The Computer"
 round_limit = 9
 
 message("Rock, Paper, Scissors")
@@ -107,7 +107,7 @@ number_of_rounds = ask_best_of(round_limit)
 begin
   message("#{"-"*6}Best of #{number_of_rounds}#{"-"*6}")
   player1_answer = ask_player_rps(player1)
-  player2_answer = ask_player_rps(player2)
+  player2_answer = ['r','s','p'].sample
   tell_round_winner(player1_answer, player2_answer, player1, player2, player1_score, player2_score)
   
   if player_wins?(player1_answer, player2_answer)
@@ -124,9 +124,9 @@ end while !is_winner
 
 message("#{"-"*6}GAME OVER#{"-"*6}")
 if player1_score > player2_score
-  tell_winner(player1, number_of_rounds, player1_score, player2_score)
+  tell_winner(player1, player2, number_of_rounds, player1_score, player2_score)
 else
-  tell_winner(player2, number_of_rounds, player2_score, player1_score)
+  tell_winner(player2, player1, number_of_rounds, player2_score, player1_score)
 end
 
 puts "Thanks for playing Rock, Paper, Scissors!"
