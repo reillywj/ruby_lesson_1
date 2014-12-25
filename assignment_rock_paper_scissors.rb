@@ -10,8 +10,6 @@
 #Declare winner/tie
 #Keep track of score
 
-require 'pry'
-
 def ask_best_of(limit)
   print "Best of how many games? Input odd number at least 1 but less than #{limit}. => "
   answer = gets.chomp
