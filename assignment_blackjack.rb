@@ -17,8 +17,6 @@
 #10. Tell player game over
 #11. Tell player how much they can go home with
 
-require 'pry'
-
 def say(message)
   puts "#{message}"
 end
@@ -29,6 +27,7 @@ def say_title(title)
 end
 
 def tell_invalid(invalid_entry, message)
+  say_title "Invalid Entry"
   puts "#{invalid_entry} is an invalid entry. #{message}."
 end
 
@@ -174,9 +173,15 @@ def sleep_and_clear_system(time)
 end
 
 def say_player_and_dealer_cards(player_cards, dealer_cards)
-  say "You have #{player_cards}. The dealer has #{dealer_cards}."
+  say_title "Cards Dealt"
+  say "You have #{calculate_value_of(player_cards)}: #{player_cards}."
+  say "The dealer has #{calculate_value_of(dealer_cards)}: #{dealer_cards}."
+  say_title ""*10
+  
 end
 
+#-------------------------------------------------------------------------------
+#--------------------------------BLACK JACK CODE--------------------------------
 #-------------------------------------------------------------------------------
 
 SUITS = ["hearts", "diamonds", "spades", "clubs"]
@@ -218,11 +223,11 @@ begin
     player_value = calculate_value_of(player_cards)
     dealer_value = calculate_value_of(dealer_cards)
     say_title "Dealing Cards..."
-    sleep_and_clear_system 5.0
+    sleep_and_clear_system 2.5
     
     #Player hit or stay?
     until player_value >= 21 || !hit_variable
-      system "clear"
+      sleep_and_clear_system 2.5
       show_cards_player_playing(player_cards, dealer_cards)
       say_title "Hit or stay?"
       hit_variable = hit_me?
@@ -246,6 +251,7 @@ begin
     end
     
     #Shouldn't need following, but adding in redundancy for time being.
+    system "clear"
     say_title("Hand Over")
     #Award winnings
     if player_value > 21
@@ -282,7 +288,6 @@ begin
       show_cards_dealer_playing(player_cards, dealer_cards)
       say player_bank
     end
-    sleep_for 2.0
     
     #Play again?
     if player_bank == 0
@@ -296,17 +301,19 @@ begin
       keep_playing = repeat? "keep playing"
     end
   end while keep_playing
+  
   say_title("GAME OVER")
   say "You left the table with #{player_bank} in your pocket."
   play_again = repeat? "play again"
   if play_again
     say_title("#{player_name}, you are about to play again.")
     say_title "LOADING..."
-    sleep_for 1.0
+    sleep_for 0.5
     say_title "LOADING......"
-    sleep_and_clear_system 2.0
+    sleep_and_clear_system 1.0
   end
 end while play_again
 
+sleep_and_clear_system 0.5
 say_title "Done Playing" 
-say "Thanks for playing Black Jack. Have a nice day."
+say "Thanks for playing Black Jack, #{player_name}. Have a nice day."
