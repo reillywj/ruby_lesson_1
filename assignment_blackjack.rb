@@ -186,14 +186,14 @@ end
 
 SUITS = ["hearts", "diamonds", "spades", "clubs"]
 CARDS = ["ace","2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
-#note: manually adjust value of ace if bust to 1
+#note: manually adjust value of ace if bust to 1. Actually don't even use the value of an ace when calculating total.
 CARD_VALUE_HASH = {"ace" =>11, "2" => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, "8" => 8, "9" => 9, "10" => 10, "jack" => 10, "queen" => 10, "king" => 10}
 
 play_again = initialize_keep_playing
 
 sleep_and_clear_system 0.5
 say_title "Black Jack"
-player_name = get_player_name
+player_name = get_player_name #Used a method because didn't know if it'd be used again later in the game.
 sleep_and_clear_system 1.0
 say "Hello, #{player_name}! We're about to play some Black Jack."
 
